@@ -11,7 +11,7 @@ __chpath_command__help() {
                 echo "chpath help $2: no usage information available." >&2
                 return 1
             fi
-            echo 'Usage: chpath <command> [arguments]'
+            echo 'Usage: chpath [-n <VAR_NAME>] <command> [arguments]'
             echo
             echo 'Available commands:'
             echo
@@ -19,6 +19,11 @@ __chpath_command__help() {
             printf '\t%-7s %s\n' 'list'   'Print PATH entries to stdout'
             printf '\t%-7s %s\n' 'pop'    'Pop <count> entries from PATH'
             printf '\t%-7s %s\n' 'push'   'Push <entries> to PATH'
+            echo
+            echo 'Global options:'
+            echo
+            printf '\t%s\n' '-n <VAR_NAME>'
+            printf '\t%s\n' 'If set, operates on <VAR_NAME> instead of PATH'
             echo
             echo 'Run "chpath help <command>" for further information about a command.'
             ;;

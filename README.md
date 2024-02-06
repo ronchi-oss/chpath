@@ -2,11 +2,11 @@
 
 [![Shelly CI](https://github.com/ronchi-oss/chpath/actions/workflows/shelly-ci.yml/badge.svg)](https://github.com/ronchi-oss/chpath/actions/workflows/shelly-ci.yml)
 
-`chpath` is a POSIX shell utility that allows editing the current shell PATH with ease by providing a simple API to it.
+`chpath` is a POSIX shell utility that allows editing the current shell PATH with ease by providing a simple API to it. In fact, as long as the variable value follows the `<path1>:<path2>:<pathN>` notation, `chpath` can operate on any variable name (e.g. `INFOPATH`, `MANPATH`) by providing the `-n <VAR_NAME>` option. For simplicity's sake, the variable that `chpath` operates on is called `PATH` throughout most of this documentation or the embedded help system.
 
 ```
 $ chpath help
-Usage: chpath <command> [arguments]
+Usage: chpath [-n <VAR_NAME>] <command> [arguments]
 
 Available commands:
 
@@ -14,6 +14,11 @@ Available commands:
 	list    Print PATH entries to stdout
 	pop     Pop <count> entries from PATH
 	push    Push <entries> to PATH
+
+Global options:
+
+	-n <VAR_NAME>
+	If set, operates on <VAR_NAME> instead of PATH
 
 Run "chpath help <command>" for further information about a command.
 ```

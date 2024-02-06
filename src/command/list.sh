@@ -5,5 +5,5 @@ __chpath_command__list__help() {
 }
 
 __chpath_command__list() {
-    echo "$PATH" | tr ':' "\n"
+    eval "echo \"\$$__CHPATH_VAR\"" | tr ':' "\n"
 }

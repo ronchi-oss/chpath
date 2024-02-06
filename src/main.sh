@@ -1,4 +1,14 @@
 chpath() {
+    __CHPATH_VAR="PATH"
+    OPTIND=1
+    while getopts n: option "$@"; do
+        case "$option" in
+            n) __CHPATH_VAR="$OPTARG" ;;
+            *) ;;
+        esac
+    done
+    shift $((OPTIND - 1))
+
     case "$1" in
         -h) shift ; __chpath_command__help 1 ;;
         help) shift ; __chpath_command__help 0 "$1" ;;
@@ -15,3 +25,4 @@ chpath() {
             fi
     esac
 }
+

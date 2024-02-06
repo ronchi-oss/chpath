@@ -16,5 +16,5 @@ __chpath_command__edit() {
     while IFS= read -r item; do
         new_path="$new_path:$item"
     done < "$tmp"
-    __chpath_command__set "${new_path#:}"
+    __chpath_command__set "$__CHPATH_VAR" "${new_path#:}"
 }

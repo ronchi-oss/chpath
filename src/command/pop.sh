@@ -18,5 +18,5 @@ __chpath_command__pop() {
     for item in $items; do
         new_path="$new_path:$item"
     done
-    __chpath_command__set "${new_path#:}"
+    __chpath_command__set "$__CHPATH_VAR" "${new_path#:}"
 }
