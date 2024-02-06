@@ -1,3 +1,3 @@
 __chpath_command__version() {
-    echo '0.1.0'
+    echo 'chpath version 0.2.0'
 }
