@@ -34,13 +34,48 @@ $ echo $PATH
 $HOME/.config/bin:$HOME/go/bin:...
 ```
 
-## Installation from source
+## Installation
 
-The installation consists of building two shell scripts: `chpath.sh`, to be sourced by our login shell, and, optionally, `chpath-completion.bash`, for enabling tab completion (on bash).
+Since `chpath` is a POSIX shell **function** that modifies the current shell environment, installation methods require, as a last step, that your shell of choice sources `chpath.sh` in its `.profile` file (or equivalent depending on shell/system).
+
+### Homebrew
 
 ```
+brew tap ronchi-oss/tap
+brew install chpath
+
+# then source `chpath.sh` from your ~/.profile (or similar)
+# this assumes you have also exported HOMEBREW_PREFIX as per `brew shellenv`
+source "$HOMEBREW_PREFIX/opt/chpath/src/chpath.sh"
+```
+
+Note: the chpath homebrew formula builds, installs and sources the bash shell completion; no manual step required.
+
+### From source
+
+The installation consists of building two shell scripts: `chpath.sh`, to be sourced by a (login) shell, and, optionally, `chpath-completion.bash`, for enabling tab completion (on bash). Building `chpath` requires [shelly](https://github.com/ronchi-oss/shelly). The steps below assume `SHELLY_BIN` is set and that your (login) shell loads files placed in there.
+
+Builds and installs the scripts under `SHELLY_BIN`:
+
+```sh
 git clone https://github.com/ronchi-oss/chpath.git
 cd chpath
 shelly install chpath.sh main
 shelly install chpath-completion.bash bash_completion
+```
+
+Required to source the `chpath` function into all shell sessions:
+
+```sh
+for file in $SHELLY_BIN/*.sh; do
+    source "$file"
+done
+```
+
+Optionally, load bash shell completion into all shell sessions:
+
+```sh
+for path in $SHELLY_BIN/*-completion.bash; do
+    source "$path"
+done
 ```
