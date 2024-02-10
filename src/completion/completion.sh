@@ -1,10 +1,7 @@
 __chpath_completion__suggest_commands() {
-    chpath help \
-        | grep '^\t' \
-        | cut -f 2 \
-        | while read -r command _; do
-              echo "$command"
-          done
+    for command in edit list pop push; do
+        echo "$command"
+    done
 }
 
 __chpath_completion__suggest_commands_with_help() {
