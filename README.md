@@ -39,6 +39,12 @@ $ echo $PATH
 $HOME/.config/bin:$HOME/go/bin:...
 ```
 
+## Try it (with Docker)
+
+```sh
+curl https://raw.githubusercontent.com/ronchi-oss/chpath/main/bin/chpath-alpine | sh
+```
+
 ## Installation
 
 Since `chpath` is a POSIX shell **function** that modifies the current shell environment, installation methods require, as a last step, that your shell of choice sources `chpath.sh` in its `.profile` file (or equivalent depending on shell/system).
